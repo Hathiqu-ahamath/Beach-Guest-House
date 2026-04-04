@@ -157,11 +157,25 @@
 <a class="text-[0.75rem] font-sans uppercase tracking-[0.05em] text-slate-600 hover:text-cyan-800 transition-opacity duration-300" href="#contact">CONTACT</a>
 <button class="bg-primary text-on-primary px-6 py-2 rounded-full font-bold text-sm hover:opacity-80 transition-opacity duration-300">BOOK NOW</button>
 </div>
-<button class="md:hidden text-primary">
-<span class="material-symbols-outlined" data-icon="menu">menu</span>
+<button id="mobile-menu-btn" class="md:hidden text-primary p-2" onclick="toggleMobileMenu()">
+<span class="material-symbols-outlined text-3xl" data-icon="menu">menu</span>
 </button>
 </div>
 </header>
+<!-- Mobile Menu -->
+<div id="mobile-menu" class="fixed top-0 right-0 h-full w-72 bg-surface shadow-2xl z-40 flex flex-col items-start justify-center gap-0 px-8 py-20 translate-x-full md:hidden transition-transform duration-300 ease-in-out" style="display: none;">
+<button class="absolute top-6 right-6 text-primary p-2" onclick="toggleMobileMenu()">
+<span class="material-symbols-outlined text-3xl" data-icon="close">close</span>
+</button>
+<div class="flex flex-col gap-6 w-full">
+<a class="text-xl font-sans uppercase tracking-[0.15em] text-cyan-900 hover:text-primary hover:translate-x-2 transition-all duration-300 menu-item" href="#hero" onclick="toggleMobileMenu()">HOME</a>
+<a class="text-xl font-sans uppercase tracking-[0.15em] text-cyan-900 hover:text-primary hover:translate-x-2 transition-all duration-300 menu-item" href="#rooms" onclick="toggleMobileMenu()">ROOMS</a>
+<a class="text-xl font-sans uppercase tracking-[0.15em] text-cyan-900 hover:text-primary hover:translate-x-2 transition-all duration-300 menu-item" href="#about" onclick="toggleMobileMenu()">ABOUT</a>
+<a class="text-xl font-sans uppercase tracking-[0.15em] text-cyan-900 hover:text-primary hover:translate-x-2 transition-all duration-300 menu-item" href="gallery.html" onclick="toggleMobileMenu()">GALLERY</a>
+<a class="text-xl font-sans uppercase tracking-[0.15em] text-cyan-900 hover:text-primary hover:translate-x-2 transition-all duration-300 menu-item" href="#contact" onclick="toggleMobileMenu()">CONTACT</a>
+</div>
+<button class="bg-primary text-on-primary px-8 py-3 rounded-full font-bold text-base mt-8 w-full hover:scale-105 transition-transform duration-300">BOOK NOW</button>
+</div>
 <!-- Hero Section -->
 <section class="relative h-screen flex items-center justify-center overflow-hidden" id="hero">
 <div class="absolute inset-0 z-0">
@@ -425,7 +439,7 @@
 <span class="label-md tracking-[0.2em] text-primary/60 font-bold">RESERVATIONS</span>
 <h3 class="text-3xl font-noto-serif mt-2">Book Your Escape</h3>
 </div>
-<form class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<form class="grid grid-cols-1 md:grid-cols-2 gap-3">
 <div class="space-y-1">
 <label class="text-[0.65rem] font-bold text-primary tracking-widest uppercase ml-1">Your Full Name</label>
 <input id="name" class="w-full border-0 border-b border-outline-variant bg-transparent py-2 px-1 focus:ring-0 focus:border-primary transition-all placeholder:text-outline-variant/60" placeholder="John Doe" type="text"/>
@@ -532,4 +546,37 @@ CONFIRM RESERVATION
 <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
 </svg>
 </a>
+<script>
+function toggleMobileMenu() {
+  const menu = document.getElementById('mobile-menu');
+  if (menu.classList.contains('menu-open')) {
+    menu.classList.remove('menu-open');
+  } else {
+    menu.classList.add('menu-open');
+  }
+}
+</script>
+<style>
+#mobile-menu.menu-open {
+  display: flex !important;
+  transform: translateX(0);
+}
+.menu-item {
+  opacity: 0;
+  transform: translateX(20px);
+  animation: slideIn 0.4s ease forwards;
+}
+#mobile-menu.menu-open .menu-item:nth-child(1) { animation-delay: 0.1s; }
+#mobile-menu.menu-open .menu-item:nth-child(2) { animation-delay: 0.2s; }
+#mobile-menu.menu-open .menu-item:nth-child(3) { animation-delay: 0.3s; }
+#mobile-menu.menu-open .menu-item:nth-child(4) { animation-delay: 0.4s; }
+#mobile-menu.menu-open .menu-item:nth-child(5) { animation-delay: 0.5s; }
+
+@keyframes slideIn {
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+</style>
 </body></html>
