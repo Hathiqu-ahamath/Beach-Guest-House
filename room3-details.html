@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html class="scroll-smooth" lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Double Room with Sea View | Beach Guest House</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400;700&amp;family=Plus+Jakarta+Sans:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#005d72",
+                        "on-primary": "#ffffff",
+                        "surface": "#faf9f8",
+                        "on-surface": "#1a1c1c",
+                        "on-surface-variant": "#3f484c",
+                        "outline-variant": "#bec8cd"
+                    },
+                    fontFamily: {
+                        "headline": ["Noto Serif"],
+                        "body": ["Plus Jakarta Sans"]
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #faf9f8; color: #1a1c1c; }
+        .font-noto-serif { font-family: 'Noto Serif', serif; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24; }
+    </style>
+</head>
+<body class="bg-surface text-on-surface">
+    <header class="fixed top-0 w-full z-50 bg-surface/70 backdrop-blur-md shadow-sm">
+        <div class="max-w-7xl mx-auto px-8 py-4 flex justify-between items-center">
+            <div class="flex items-center gap-2">
+                <span class="material-symbols-outlined text-cyan-800">waves</span>
+                <h1 class="text-2xl font-serif tracking-widest text-cyan-900 font-noto-serif">Beach Guest House</h1>
+            </div>
+            <a class="text-primary border-b-2 border-primary pb-1 font-semibold" href="index.html#rooms">← Back to Rooms</a>
+        </div>
+    </header>
+
+    <section class="pt-24 pb-12 px-6">
+        <div class="max-w-6xl mx-auto">
+            <a href="index.html#rooms" class="inline-flex items-center gap-2 text-primary mb-6 hover:opacity-70">
+                <span class="material-symbols-outlined">arrow_back</span>
+                Back to Accommodation
+            </a>
+            <h1 class="text-4xl md:text-5xl font-noto-serif text-cyan-900 mb-4">Double Room with Sea View</h1>
+            <p class="text-xl text-on-surface-variant mb-8">LKR 6,941 / night</p>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-12">
+                <div class="aspect-video rounded-lg overflow-hidden shadow-lg">
+                    <img alt="Double Room Main View" class="w-full h-full object-cover" src="images/room3.jpg"/>
+                </div>
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="aspect-square rounded-lg overflow-hidden shadow-md">
+                        <img alt="Double Room Detail 1" class="w-full h-full object-cover" src="images/room3.jpg"/>
+                    </div>
+                    <div class="aspect-square rounded-lg overflow-hidden shadow-md">
+                        <img alt="Double Room Detail 2" class="w-full h-full object-cover" src="images/gallery7.jpg"/>
+                    </div>
+                    <div class="aspect-square rounded-lg overflow-hidden shadow-md">
+                        <img alt="Double Room Detail 3" class="w-full h-full object-cover" src="images/gallery8.jpg"/>
+                    </div>
+                    <div class="aspect-square rounded-lg overflow-hidden shadow-md">
+                        <img alt="Double Room Detail 4" class="w-full h-full object-cover" src="images/gallery9.jpg"/>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <h3 class="text-xl font-noto-serif text-cyan-900 mb-4">Room Features</h3>
+                    <ul class="space-y-3 text-on-surface-variant">
+                        <li class="flex items-center gap-2"><span class="material-symbols-outlined text-primary">bed</span> 1 King Size Bed</li>
+                        <li class="flex items-center gap-2"><span class="material-symbols-outlined text-primary">ac_unit</span> Air Conditioning</li>
+                        <li class="flex items-center gap-2"><span class="material-symbols-outlined text-primary">wifi</span> Free WiFi</li>
+                        <li class="flex items-center gap-2"><span class="material-symbols-outlined text-primary">tv</span> Smart TV</li>
+                        <li class="flex items-center gap-2"><span class="material-symbols-outlined text-primary">local_cafe</span> Coffee/Tea Maker</li>
+                        <li class="flex items-center gap-2"><span class="material-symbols-outlined text-primary">door_sliding</span> Private Balcony</li>
+                    </ul>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <h3 class="text-xl font-noto-serif text-cyan-900 mb-4">Bathroom</h3>
+                    <ul class="space-y-3 text-on-surface-variant">
+                        <li class="flex items-center gap-2"><span class="material-symbols-outlined text-primary">shower</span> Hot & Cold Shower</li>
+                        <li class="flex items-center gap-2"><span class="material-symbols-outlined text-primary">soap</span> Premium Toiletries</li>
+                        <li class="flex items-center gap-2"><span class="material-symbols-outlined text-primary">dry_cleaning</span> Fresh Towels</li>
+                        <li class="flex items-center gap-2"><span class="material-symbols-outlined text-primary">mirror</span> Vanity Mirror</li>
+                    </ul>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <h3 class="text-xl font-noto-serif text-cyan-900 mb-4">Services Included</h3>
+                    <ul class="space-y-3 text-on-surface-variant">
+                        <li class="flex items-center gap-2"><span class="material-symbols-outlined text-primary">room_service</span> Room Service</li>
+                        <li class="flex items-center gap-2"><span class="material-symbols-outlined text-primary">restaurant</span> Breakfast Included</li>
+                        <li class="flex items-center gap-2"><span class="material-symbols-outlined text-primary">local_laundry_service</span> Laundry Service</li>
+                        <li class="flex items-center gap-2"><span class="material-symbols-outlined text-primary">cleaning_services</span> Daily Housekeeping</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="bg-white p-8 rounded-lg shadow-md mb-12">
+                <h3 class="text-2xl font-noto-serif text-cyan-900 mb-4">About This Room</h3>
+                <p class="text-on-surface-variant leading-relaxed mb-6">
+                    Our Double Room with Sea View is perfect for couples seeking a romantic coastal escape. This elegant room features a luxurious king-size bed with premium linens, ensuring a restful night's sleep. The floor-to-ceiling windows offer panoramic ocean views, creating a stunning backdrop for your stay.
+                </p>
+                <p class="text-on-surface-variant leading-relaxed">
+                    Couples can enjoy the private balcony, perfect for morning coffees while watching the sunrise over the ocean. The room is equipped with modern amenities including air conditioning, smart TV, and complimentary WiFi. Indulge in our complimentary breakfast, served at the restaurant, or enjoy a quiet dinner through room service. The sophisticated decor and coastal charm make this room ideal for a romantic getaway.
+                </p>
+            </div>
+
+            <div class="flex flex-col md:flex-row gap-4 justify-center">
+                <a href="https://wa.me/94772309128?text=I'm%20interested%20in%20booking%20the%20Double%20Room%20with%20Sea%20View" target="_blank" class="px-8 py-4 bg-primary text-white rounded-full font-bold text-lg hover:opacity-80 transition-opacity text-center">
+                    Book Now via WhatsApp
+                </a>
+                <a href="index.html#rooms" class="px-8 py-4 border border-primary text-primary rounded-full font-bold text-lg hover:bg-cyan-50 transition-colors text-center">
+                    View Other Rooms
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="w-full py-12 bg-slate-100 flex flex-col md:flex-row justify-between items-center px-12 border-t border-slate-200/20">
+        <div class="mb-8 md:mb-0">
+            <h4 class="font-serif text-xl text-cyan-900 font-noto-serif uppercase tracking-widest">Beach Guest House</h4>
+        </div>
+        <p class="font-sans uppercase tracking-[0.05em] text-[0.75rem] text-slate-400">© 2024 Beach Guest House. ALL RIGHTS RESERVED.</p>
+    </footer>
+</body>
+</html>

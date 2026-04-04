@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html class="scroll-smooth" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>The Coastal Editorial | Modern Beach Guest House</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400;700&amp;family=Plus+Jakarta+Sans:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+                    "inverse-surface": "#2f3130",
+                    "surface-dim": "#dadad9",
+                    "on-primary-container": "#daf4ff",
+                    "outline": "#6f797d",
+                    "background": "#faf9f8",
+                    "surface-container-lowest": "#ffffff",
+                    "surface-container-high": "#e9e8e7",
+                    "on-secondary": "#ffffff",
+                    "surface-bright": "#faf9f8",
+                    "on-primary": "#ffffff",
+                    "on-tertiary-fixed-variant": "#00504a",
+                    "outline-variant": "#bec8cd",
+                    "on-error": "#ffffff",
+                    "primary": "#005d72",
+                    "surface-container": "#eeeeed",
+                    "secondary-container": "#f1ddba",
+                    "on-background": "#1a1c1c",
+                    "inverse-on-surface": "#f1f0f0",
+                    "tertiary-container": "#007a72",
+                    "on-primary-fixed-variant": "#004e60",
+                    "on-primary-fixed": "#001f28",
+                    "error-container": "#ffdad6",
+                    "secondary": "#6b5d41",
+                    "surface-tint": "#00677e",
+                    "on-surface": "#1a1c1c",
+                    "on-secondary-fixed": "#241a05",
+                    "on-tertiary-container": "#a9fff5",
+                    "on-error-container": "#93000a",
+                    "secondary-fixed-dim": "#d7c4a2",
+                    "tertiary-fixed-dim": "#71d7cd",
+                    "on-secondary-fixed-variant": "#52452b",
+                    "on-tertiary-fixed": "#00201d",
+                    "surface": "#faf9f8",
+                    "on-surface-variant": "#3f484c",
+                    "tertiary-fixed": "#8ef4e9",
+                    "primary-fixed": "#b5ebff",
+                    "on-tertiary": "#ffffff",
+                    "inverse-primary": "#7cd2ef",
+                    "surface-container-highest": "#e3e2e1",
+                    "primary-fixed-dim": "#7cd2ef",
+                    "secondary-fixed": "#f4e0bd",
+                    "tertiary": "#005f59",
+                    "surface-container-low": "#f4f3f2",
+                    "on-secondary-container": "#6f6145",
+                    "primary-container": "#007791",
+                    "error": "#ba1a1a",
+                    "surface-variant": "#e3e2e1"
+            },
+            borderRadius: {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            fontFamily: {
+                    "headline": ["Noto Serif"],
+                    "body": ["Plus Jakarta Sans"],
+                    "label": ["Plus Jakarta Sans"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #faf9f8; color: #1a1c1c; }
+        .font-noto-serif { font-family: 'Noto Serif', serif; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24; }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fadeInLeft {
+            from { opacity: 0; transform: translateX(-30px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        @keyframes fadeInRight {
+            from { opacity: 0; transform: translateX(30px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        @keyframes pulse-glow {
+            0%, 100% { box-shadow: 0 0 20px rgba(0, 93, 114, 0.3); }
+            50% { box-shadow: 0 0 40px rgba(0, 93, 114, 0.6); }
+        }
+        @keyframes shimmer {
+            0% { background-position: -200% 0; }
+            100% { background-position: 200% 0; }
+        }
+        
+        .animate-fade-in-up { animation: fadeInUp 0.8s ease-out forwards; }
+        .animate-fade-in-left { animation: fadeInLeft 0.8s ease-out forwards; }
+        .animate-fade-in-right { animation: fadeInRight 0.8s ease-out forwards; }
+        .animate-float { animation: float 3s ease-in-out infinite; }
+        .animate-pulse-glow { animation: pulse-glow 2s ease-in-out infinite; }
+        
+        .animate-on-scroll { opacity: 0; }
+        
+        .nav-link { position: relative; }
+        .nav-link::after {
+            content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 2px; 
+            background: #005d72; transition: width 0.3s ease;
+        }
+        .nav-link:hover::after { width: 100%; }
+        
+        .hero-text { 
+            animation: fadeInUp 1s ease-out 0.3s forwards; opacity: 0; 
+        }
+        .hero-subtext { 
+            animation: fadeInUp 1s ease-out 0.6s forwards; opacity: 0; 
+        }
+        .hero-buttons { 
+            animation: fadeInUp 1s ease-out 0.9s forwards; opacity: 0; 
+        }
+        
+        .room-card { transition: transform 0.4s ease, box-shadow 0.4s ease; }
+        .room-card:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(0,0,0,0.15); }
+        
+        .facility-item { transition: all 0.3s ease; }
+        .facility-item:hover { transform: translateY(-5px); }
+        
+        .gallery-img { transition: all 0.5s ease; }
+        .gallery-img:hover { transform: scale(1.05); opacity: 0.8; }
+    </style>
+</head>
+<body class="bg-background text-on-background">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-surface/70 backdrop-blur-md shadow-sm">
+<div class="max-w-7xl mx-auto px-8 py-4 flex justify-between items-center">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-cyan-800" data-icon="waves">waves</span>
+<h1 class="text-2xl font-serif tracking-widest text-cyan-900 font-noto-serif tracking-tight">Beach Guest House</h1>
+</div>
+<div class="hidden md:flex gap-8 items-center">
+<a class="text-[0.75rem] font-sans uppercase tracking-[0.05em] text-cyan-900 border-b-2 border-cyan-800" href="#hero">HOME</a>
+<a class="text-[0.75rem] font-sans uppercase tracking-[0.05em] text-slate-600 hover:text-cyan-800 transition-opacity duration-300" href="#rooms">ROOMS</a>
+<a class="text-[0.75rem] font-sans uppercase tracking-[0.05em] text-slate-600 hover:text-cyan-800 transition-opacity duration-300" href="#about">ABOUT</a>
+<a class="text-[0.75rem] font-sans uppercase tracking-[0.05em] text-slate-600 hover:text-cyan-800 transition-opacity duration-300" href="gallery.html">GALLERY</a>
+<a class="text-[0.75rem] font-sans uppercase tracking-[0.05em] text-slate-600 hover:text-cyan-800 transition-opacity duration-300" href="#contact">CONTACT</a>
+<button class="bg-primary text-on-primary px-6 py-2 rounded-full font-bold text-sm hover:opacity-80 transition-opacity duration-300">BOOK NOW</button>
+</div>
+<button class="md:hidden text-primary">
+<span class="material-symbols-outlined" data-icon="menu">menu</span>
+</button>
+</div>
+</header>
+<!-- Hero Section -->
+<section class="relative h-screen flex items-center justify-center overflow-hidden" id="hero">
+<div class="absolute inset-0 z-0">
+<img alt="Beach Escape" class="w-full h-full object-cover" src="images/hero.jpg"/>
+<div class="absolute inset-0 bg-gradient-to-b from-transparent to-on-background/40"></div>
+</div>
+<div class="relative z-10 text-center px-6 max-w-4xl">
+<h2 class="text-5xl md:text-7xl font-noto-serif text-white mb-6 leading-tight tracking-tight hero-text">Relax by the Ocean</h2>
+<p class="text-white/90 text-lg md:text-xl mb-10 font-light max-w-2xl mx-auto leading-relaxed hero-subtext">
+                Experience a tranquil tropical escape where the horizon meets the shore. A curated sanctuary for the modern traveler seeking quiet luxury.
+            </p>
+<div class="flex flex-col md:flex-row gap-4 justify-center items-center hero-buttons">
+<a class="w-full md:w-auto px-10 py-4 bg-gradient-to-br from-primary to-primary-container text-white rounded-full font-semibold text-lg hover:scale-105 transition-transform duration-300 shadow-xl animate-float" href="#booking">
+                    BOOK NOW
+                </a>
+<a class="w-full md:w-auto px-10 py-4 bg-surface/20 backdrop-blur-md text-white rounded-full font-semibold text-lg border border-white/30 hover:bg-white/30 transition-all duration-300" href="#rooms">
+                    VIEW ROOMS
+                </a>
+</div>
+</div>
+</section>
+<!-- About Section -->
+<section class="py-24 px-6 md:px-12 bg-surface" id="about">
+<div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-16 items-center">
+<div class="relative">
+<div class="absolute -top-6 -left-6 w-32 h-32 bg-secondary-container/30 rounded-lg -z-10"></div>
+<img alt="Coastal Lifestyle" class="w-full rounded-lg shadow-2xl" src="images/about.jpg"/>
+<div class="absolute -bottom-10 -right-10 bg-surface-container-lowest p-8 rounded-lg shadow-lg hidden lg:block max-w-xs">
+<p class="text-primary italic font-noto-serif">"The perfect blend of modern comfort and coastal soul."</p>
+</div>
+</div>
+<div class="space-y-8">
+<span class="label-md tracking-[0.2em] text-primary/60 font-bold">OUR STORY</span>
+<h3 class="text-4xl font-noto-serif text-on-background leading-snug">The essence of shorefront living.</h3>
+<p class="text-on-surface-variant text-lg leading-relaxed">
+                    Designed as an extension of the coastline, The Coastal Editorial offers a refined approach to hospitality. We believe in the luxury of space, the rhythm of the waves, and the beauty of simplicity. Every corner is curated to evoke a sense of calm.
+                </p>
+<div class="pt-4">
+<a class="text-primary border-b-2 border-primary pb-1 font-semibold tracking-wide hover:opacity-70 transition-opacity" href="#">LEARN MORE ABOUT US</a>
+</div>
+</div>
+</div>
+</section>
+<!-- Rooms Section -->
+<section class="py-16 bg-surface-container-low overflow-hidden" id="rooms">
+<div class="max-w-6xl mx-auto px-8 mb-8">
+<span class="label-md tracking-[0.2em] text-primary/60 font-bold">ACCOMMODATION</span>
+<h3 class="text-4xl font-noto-serif mt-2 leading-snug">Curated Sanctuaries</h3>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 pb-8 items-stretch mt-8">
+<!-- Room Card 1 -->
+<div class="group room-card bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow flex flex-col h-full">
+<div class="relative h-[160px] overflow-hidden flex-shrink-0">
+<img alt="Triple Room" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" src="images/room1.jpg"/>
+<div class="absolute top-3 right-3 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full">
+<span class="font-bold text-primary text-sm">LKR 5,048</span>
+</div>
+<div class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 p-4 flex flex-col justify-center">
+<div class="grid grid-cols-2 gap-2 text-white text-xs">
+<div class="flex items-center gap-1"><span class="material-symbols-outlined text-sm">ac_unit</span><span>AC</span></div>
+<div class="flex items-center gap-1"><span class="material-symbols-outlined text-sm">wifi</span><span>WiFi</span></div>
+<div class="flex items-center gap-1"><span class="material-symbols-outlined text-sm">tv</span><span>Smart TV</span></div>
+<div class="flex items-center gap-1"><span class="material-symbols-outlined text-sm">local_laundry_service</span><span>Laundry</span></div>
+<div class="flex items-center gap-1"><span class="material-symbols-outlined text-sm">room_service</span><span>Room Service</span></div>
+<div class="flex items-center gap-1"><span class="material-symbols-outlined text-sm">restaurant</span><span>Breakfast</span></div>
+</div>
+</div>
+</div>
+<div class="p-3 flex-1 flex flex-col justify-between">
+<h4 class="text-base font-noto-serif text-cyan-900 mb-2 text-center">Triple Room with Sea View</h4>
+<div class="flex gap-4 text-on-surface-variant justify-center mb-3">
+<div class="flex items-center gap-1"><span class="material-symbols-outlined text-xs">ac_unit</span><span class="text-[10px] uppercase">AC</span></div>
+<div class="flex items-center gap-1"><span class="material-symbols-outlined text-xs">wifi</span><span class="text-[10px] uppercase">WIFI</span></div>
+<div class="flex items-center gap-1"><span class="material-symbols-outlined text-xs">visibility</span><span class="text-[10px] uppercase">SEA VIEW</span></div>
+</div>
+<div class="flex gap-2">
+<a class="flex-1 bg-cyan-800 text-white text-xs py-2 rounded hover:bg-cyan-700 transition-colors text-center block" href="https://wa.me/94772309128?text=I'm%20interested%20in%20booking%20the%20Triple%20Room%20with%20Sea%20View" target="_blank">Book Now</a>
+<a href="room1-details.html" class="flex-1 border border-cyan-800 text-cyan-800 text-xs py-2 rounded hover:bg-cyan-50 transition-colors text-center block">More Details</a>
+</div>
+</div>
+</div>
+<!-- Room Card 2 -->
+<div class="group room-card bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow flex flex-col h-full">
+<div class="relative h-[160px] overflow-hidden flex-shrink-0">
+<img alt="Standard Triple Room" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" src="images/room2.jpg"/>
+<div class="absolute top-3 right-3 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full">
+<span class="font-bold text-primary text-sm">LKR 6,941</span>
+</div>
+<div class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 p-4 flex flex-col justify-center">
+<div class="grid grid-cols-2 gap-2 text-white text-xs">
+<div class="flex items-center gap-1"><span class="material-symbols-outlined text-sm">ac_unit</span><span>AC</span></div>
+<div class="flex items-center gap-1"><span class="material-symbols-outlined text-sm">wifi</span><span>WiFi</span></div>
+<div class="flex items-center gap-1"><span class="material-symbols-outlined text-sm">tv</span><span>Smart TV</span></div>
+<div class="flex items-center gap-1"><span class="material-symbols-outlined text-sm">local_laundry_service</span><span>Laundry</span></div>
+<div class="flex items-center gap-1"><span class="material-symbols-outlined text-sm">room_service</span><span>Room Service</span></div>
+<div class="flex items-center gap-1"><span class="material-symbols-outlined text-sm">restaurant</span><span>Breakfast</span></div>
+</div>
+</div>
+</div>
+<div class="p-3 flex-1 flex flex-col justify-between">
+<h4 class="text-base font-noto-serif text-cyan-900 mb-2 text-center">Standard Triple Room with Sea View</h4>
+<div class="flex gap-4 text-on-surface-variant justify-center mb-3">
+<div class="flex items-center gap-1"><span class="material-symbols-outlined text-xs">ac_unit</span><span class="text-[10px] uppercase">AC</span></div>
+<div class="flex items-center gap-1"><span class="material-symbols-outlined text-xs">wifi</span><span class="text-[10px] uppercase">WIFI</span></div>
+<div class="flex items-center gap-1"><span class="material-symbols-outlined text-xs">visibility</span><span class="text-[10px] uppercase">SEA VIEW</span></div>
+</div>
+<div class="flex gap-2">
+<a class="flex-1 bg-cyan-800 text-white text-xs py-2 rounded hover:bg-cyan-700 transition-colors text-center block" href="https://wa.me/94772309128?text=I'm%20interested%20in%20booking%20the%20Standard%20Triple%20Room%20with%20Sea%20View" target="_blank">Book Now</a>
+<a href="room2-details.html" class="flex-1 border border-cyan-800 text-cyan-800 text-xs py-2 rounded hover:bg-cyan-50 transition-colors text-center block">More Details</a>
+</div>
+</div>
+</div>
+<!-- Room Card 3 -->
+<div class="group room-card bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow flex flex-col h-full">
+<div class="relative h-[160px] overflow-hidden flex-shrink-0">
+<img alt="Double Room" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" src="images/room3.jpg"/>
+<div class="absolute top-3 right-3 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full">
+<span class="font-bold text-primary text-sm">LKR 6,941</span>
+</div>
+<div class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 p-4 flex flex-col justify-center">
+<div class="grid grid-cols-2 gap-2 text-white text-xs">
+<div class="flex items-center gap-1"><span class="material-symbols-outlined text-sm">ac_unit</span><span>AC</span></div>
+<div class="flex items-center gap-1"><span class="material-symbols-outlined text-sm">wifi</span><span>WiFi</span></div>
+<div class="flex items-center gap-1"><span class="material-symbols-outlined text-sm">tv</span><span>Smart TV</span></div>
+<div class="flex items-center gap-1"><span class="material-symbols-outlined text-sm">local_laundry_service</span><span>Laundry</span></div>
+<div class="flex items-center gap-1"><span class="material-symbols-outlined text-sm">room_service</span><span>Room Service</span></div>
+<div class="flex items-center gap-1"><span class="material-symbols-outlined text-sm">restaurant</span><span>Breakfast</span></div>
+</div>
+</div>
+</div>
+<div class="p-3 flex-1 flex flex-col justify-between">
+<h4 class="text-base font-noto-serif text-cyan-900 mb-2 text-center">Double Room with Sea View</h4>
+<div class="flex gap-4 text-on-surface-variant justify-center mb-3">
+<div class="flex items-center gap-1"><span class="material-symbols-outlined text-xs">ac_unit</span><span class="text-[10px] uppercase">AC</span></div>
+<div class="flex items-center gap-1"><span class="material-symbols-outlined text-xs">wifi</span><span class="text-[10px] uppercase">WIFI</span></div>
+<div class="flex items-center gap-1"><span class="material-symbols-outlined text-xs">visibility</span><span class="text-[10px] uppercase">SEA VIEW</span></div>
+</div>
+<div class="flex gap-2">
+<a class="flex-1 bg-cyan-800 text-white text-xs py-2 rounded hover:bg-cyan-700 transition-colors text-center block" href="https://wa.me/94772309128?text=I'm%20interested%20in%20booking%20the%20Double%20Room%20with%20Sea%20View" target="_blank">Book Now</a>
+<a href="room3-details.html" class="flex-1 border border-cyan-800 text-cyan-800 text-xs py-2 rounded hover:bg-cyan-50 transition-colors text-center block">More Details</a>
+</div>
+</div>
+</div>
+<!-- Room Card 4 -->
+<div class="group room-card bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow flex flex-col h-full">
+<div class="relative h-[160px] overflow-hidden flex-shrink-0">
+<img alt="Standard Triple Room" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" src="images/room1.jpg"/>
+<div class="absolute top-3 right-3 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full">
+<span class="font-bold text-primary text-sm">LKR 6,941</span>
+</div>
+<div class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 p-4 flex flex-col justify-center">
+<div class="grid grid-cols-2 gap-2 text-white text-xs">
+<div class="flex items-center gap-1"><span class="material-symbols-outlined text-sm">ac_unit</span><span>AC</span></div>
+<div class="flex items-center gap-1"><span class="material-symbols-outlined text-sm">wifi</span><span>WiFi</span></div>
+<div class="flex items-center gap-1"><span class="material-symbols-outlined text-sm">tv</span><span>Smart TV</span></div>
+<div class="flex items-center gap-1"><span class="material-symbols-outlined text-sm">local_laundry_service</span><span>Laundry</span></div>
+<div class="flex items-center gap-1"><span class="material-symbols-outlined text-sm">room_service</span><span>Room Service</span></div>
+<div class="flex items-center gap-1"><span class="material-symbols-outlined text-sm">restaurant</span><span>Breakfast</span></div>
+</div>
+</div>
+</div>
+<div class="p-3 flex-1 flex flex-col justify-between">
+<h4 class="text-base font-noto-serif text-cyan-900 mb-2 text-center">Standard Triple Room with Sea View</h4>
+<div class="flex gap-4 text-on-surface-variant justify-center mb-3">
+<div class="flex items-center gap-1"><span class="material-symbols-outlined text-xs">ac_unit</span><span class="text-[10px] uppercase">AC</span></div>
+<div class="flex items-center gap-1"><span class="material-symbols-outlined text-xs">wifi</span><span class="text-[10px] uppercase">WIFI</span></div>
+<div class="flex items-center gap-1"><span class="material-symbols-outlined text-xs">visibility</span><span class="text-[10px] uppercase">SEA VIEW</span></div>
+</div>
+<div class="flex gap-2">
+<a class="flex-1 bg-cyan-800 text-white text-xs py-2 rounded hover:bg-cyan-700 transition-colors text-center block" href="https://wa.me/94772309128?text=I'm%20interested%20in%20booking%20the%20Standard%20Triple%20Room%20with%20Sea%20View" target="_blank">Book Now</a>
+<a href="room4-details.html" class="flex-1 border border-cyan-800 text-cyan-800 text-xs py-2 rounded hover:bg-cyan-50 transition-colors text-center block">More Details</a>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Testimonials Section -->
+<section class="py-24 bg-surface-container-low px-6" id="gallery-preview">
+<div class="max-w-7xl mx-auto">
+<div class="text-center mb-16">
+<span class="label-md tracking-[0.2em] text-primary/60 font-bold uppercase">Gallery</span>
+<h3 class="text-4xl font-noto-serif mt-2">Gallery Preview</h3>
+<p class="text-on-surface-variant mt-4 max-w-2xl mx-auto italic">A glimpse into the serene beauty and curated details of our coastal haven.</p>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-16">
+<div class="aspect-square overflow-hidden rounded-lg shadow-sm group">
+<img alt="Ocean Sunrise" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 opacity-90 group-hover:opacity-100 gallery-img" src="images/gallery7.jpg"/>
+</div>
+<div class="aspect-square overflow-hidden rounded-lg shadow-sm group">
+<img alt="Poolside Cocktails" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 opacity-90 group-hover:opacity-100 gallery-img" src="images/gallery8.jpg"/>
+</div>
+<div class="aspect-square overflow-hidden rounded-lg shadow-sm group">
+<img alt="Beach Sunset" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 opacity-90 group-hover:opacity-100 gallery-img" src="images/gallery9.jpg"/>
+</div>
+<div class="aspect-square overflow-hidden rounded-lg shadow-sm group">
+<img alt="Room Detail" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 opacity-90 group-hover:opacity-100 gallery-img" src="images/gallery10.jpg"/>
+</div>
+</div>
+<div class="flex justify-center">
+<a class="px-10 py-4 bg-primary text-white rounded-full font-bold text-sm tracking-widest hover:opacity-90 transition-opacity shadow-lg uppercase" href="gallery.html">
+        View Full Gallery
+      </a>
+</div>
+</div>
+</section><section class="py-24 bg-surface px-6">
+<div class="max-w-7xl mx-auto">
+<div class="text-center mb-16">
+<span class="label-md tracking-[0.2em] text-primary/60 font-bold">GUEST STORIES</span>
+<h3 class="text-4xl font-noto-serif mt-2">What Our Guests Say</h3>
+</div>
+<div class="grid md:grid-cols-3 gap-8">
+<div class="bg-surface-container-low p-10 rounded-xl space-y-6">
+<div class="flex gap-1 text-primary">
+<span class="material-symbols-outlined" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+<p class="text-on-surface-variant italic leading-relaxed">"The most peaceful week of my life. The design is impeccable, and the staff truly understands the meaning of hospitality."</p>
+<div>
+<h5 class="font-bold">Julianne Rhodes</h5>
+<p class="text-xs text-primary tracking-widest uppercase">London, UK</p>
+</div>
+</div>
+<div class="bg-surface-container-low p-10 rounded-xl space-y-6">
+<div class="flex gap-1 text-primary">
+<span class="material-symbols-outlined" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+<p class="text-on-surface-variant italic leading-relaxed">"Waking up to the sound of the ocean and the sunrise from the Horizon Suite was an unforgettable experience."</p>
+<div>
+<h5 class="font-bold">Marcus Chen</h5>
+<p class="text-xs text-primary tracking-widest uppercase">San Francisco, CA</p>
+</div>
+</div>
+<div class="bg-surface-container-low p-10 rounded-xl space-y-6">
+<div class="flex gap-1 text-primary">
+<span class="material-symbols-outlined" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+<p class="text-on-surface-variant italic leading-relaxed">"Minimalist luxury at its best. No clutter, just calm. The yoga sessions by the beach are highly recommended."</p>
+<div>
+<h5 class="font-bold">Elena Rossi</h5>
+<p class="text-xs text-primary tracking-widest uppercase">Milan, Italy</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Booking Section -->
+<section class="py-16 bg-surface-container px-6 relative overflow-hidden" id="booking">
+<div class="absolute -right-20 -top-20 w-96 h-96 bg-primary/5 rounded-full blur-3xl"></div>
+<div class="max-w-2xl mx-auto relative z-10 bg-surface-container-lowest p-6 md:p-8 rounded-2xl shadow-xl">
+<div class="text-center mb-8">
+<span class="label-md tracking-[0.2em] text-primary/60 font-bold">RESERVATIONS</span>
+<h3 class="text-3xl font-noto-serif mt-2">Book Your Escape</h3>
+</div>
+<form class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="space-y-1">
+<label class="text-[0.65rem] font-bold text-primary tracking-widest uppercase ml-1">Your Full Name</label>
+<input id="name" class="w-full border-0 border-b border-outline-variant bg-transparent py-2 px-1 focus:ring-0 focus:border-primary transition-all placeholder:text-outline-variant/60" placeholder="John Doe" type="text"/>
+</div>
+<div class="space-y-1">
+<label class="text-[0.65rem] font-bold text-primary tracking-widest uppercase ml-1">Email Address</label>
+<input id="email" class="w-full border-0 border-b border-outline-variant bg-transparent py-2 px-1 focus:ring-0 focus:border-primary transition-all placeholder:text-outline-variant/60" placeholder="email@example.com" type="email"/>
+</div>
+<div class="space-y-1">
+<label class="text-[0.65rem] font-bold text-primary tracking-widest uppercase ml-1">Room Type</label>
+<select id="room" class="w-full border-0 border-b border-outline-variant bg-transparent py-2 px-1 focus:ring-0 focus:border-primary transition-all">
+<option>The Horizon Suite</option>
+<option>Tropical Garden Villa</option>
+<option>Coastal Loft</option>
+</select>
+</div>
+<div class="space-y-1">
+<label class="text-[0.65rem] font-bold text-primary tracking-widest uppercase ml-1">Arrival Date</label>
+<input id="date" class="w-full border-0 border-b border-outline-variant bg-transparent py-2 px-1 focus:ring-0 focus:border-primary transition-all" type="date"/>
+</div>
+<div class="space-y-1">
+<label class="text-[0.65rem] font-bold text-primary tracking-widest uppercase ml-1">Number of Guests</label>
+<input id="guests" class="w-full border-0 border-b border-outline-variant bg-transparent py-2 px-1 focus:ring-0 focus:border-primary transition-all placeholder:text-outline-variant/60" min="1" placeholder="2" type="number"/>
+</div>
+<div class="space-y-1">
+<label class="text-[0.65rem] font-bold text-primary tracking-widest uppercase ml-1">Phone Number</label>
+<input id="phone" class="w-full border-0 border-b border-outline-variant bg-transparent py-2 px-1 focus:ring-0 focus:border-primary transition-all placeholder:text-outline-variant/60" placeholder="077 230 9128" type="tel"/>
+</div>
+<div class="md:col-span-2 pt-6">
+<a href="https://wa.me/94772309128?text=I'm%20interested%20in%20making%20a%20reservation" onclick="this.href='https://wa.me/94772309128?text=' + 'Name: ' + encodeURIComponent(document.getElementById('name').value) + '%0AEmail: ' + encodeURIComponent(document.getElementById('email').value) + '%0ARoom: ' + encodeURIComponent(document.getElementById('room').value) + '%0ADate: ' + encodeURIComponent(document.getElementById('date').value) + '%0AGuests: ' + encodeURIComponent(document.getElementById('guests').value) + '%0APhone: ' + encodeURIComponent(document.getElementById('phone').value)" class="w-full py-3 bg-gradient-to-r from-primary to-primary-container text-white rounded-full font-bold text-base hover:scale-[1.01] active:scale-95 transition-all shadow-lg text-center block">
+CONFIRM RESERVATION
+</a>
+</div>
+</div>
+</section>
+<!-- Location Section -->
+<section class="py-24 bg-surface" id="contact">
+<div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-stretch">
+<div class="space-y-10 flex flex-col justify-center">
+<div>
+<span class="label-md tracking-[0.2em] text-primary/60 font-bold">LOCATION</span>
+<h3 class="text-4xl font-noto-serif mt-2">Where the Tide Greets You</h3>
+</div>
+<div class="space-y-6">
+<div class="flex gap-4">
+<span class="material-symbols-outlined text-primary" data-icon="location_on">location_on</span>
+<div>
+<p class="font-bold">The Coastal Editorial</p>
+<p class="text-on-surface-variant">Beach Road, Addalaichenai-6, 32350 Addalachenai, Sri Lanka</p>
+</div>
+</div>
+<div class="flex gap-4">
+<span class="material-symbols-outlined text-primary" data-icon="mail">mail</span>
+<p class="text-on-surface-variant">beachguesthouse@gmail.com</p>
+</div>
+<div class="flex gap-4">
+<span class="material-symbols-outlined text-primary" data-icon="call">call</span>
+<p class="text-on-surface-variant">077 230 9128</p>
+</div>
+</div>
+<div class="flex gap-6">
+<a class="w-12 h-12 flex items-center justify-center rounded-full bg-surface-container hover:bg-primary hover:text-white transition-all" href="#">
+<svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+</svg>
+</a>
+<a class="w-12 h-12 flex items-center justify-center rounded-full bg-surface-container hover:bg-primary hover:text-white transition-all" href="#"><span class="material-symbols-outlined" data-icon="location_on">location_on</span></a>
+</div>
+</div>
+<div class="min-h-[400px] rounded-lg overflow-hidden shadow-2xl grayscale hover:grayscale-0 transition-all duration-1000">
+<img alt="Map Location" class="w-full h-full object-cover" src="images/location.jpg"/>
+</div>
+</div>
+</section>
+<!-- Footer -->
+<footer class="w-full py-12 bg-slate-100 flex flex-col md:flex-row justify-between items-center px-12 border-t border-slate-200/20">
+<div class="mb-8 md:mb-0">
+<h4 class="font-serif text-xl text-cyan-900 font-noto-serif uppercase tracking-widest">Beach Guest House</h4>
+</div>
+<div class="flex flex-wrap justify-center gap-8 mb-8 md:mb-0">
+<a class="font-sans uppercase tracking-[0.05em] text-[0.75rem] text-slate-500 hover:text-cyan-700 hover:translate-y-[-2px] transition-transform" href="#">JOURNAL</a>
+<a class="font-sans uppercase tracking-[0.05em] text-[0.75rem] text-slate-500 hover:text-cyan-700 hover:translate-y-[-2px] transition-transform" href="#">ROOMS</a>
+<a class="font-sans uppercase tracking-[0.05em] text-[0.75rem] text-slate-500 hover:text-cyan-700 hover:translate-y-[-2px] transition-transform" href="gallery.html">GALLERY</a>
+<a class="font-sans uppercase tracking-[0.05em] text-[0.75rem] text-slate-500 hover:text-cyan-700 hover:translate-y-[-2px] transition-transform" href="#">CONTACT</a>
+</div>
+<p class="font-sans uppercase tracking-[0.05em] text-[0.75rem] text-slate-400">© 2024 Beach Guest House. ALL RIGHTS RESERVED.</p>
+</footer>
+<style>
+@keyframes pulse-whatsapp {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.4); }
+    50% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
+}
+@keyframes float-whatsapp {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+}
+.whatsapp-btn {
+    animation: pulse-whatsapp 2s infinite, float-whatsapp 3s ease-in-out infinite;
+}
+</style>
+<!-- Floating WhatsApp Button -->
+<a class="whatsapp-btn fixed bottom-6 right-6 z-50 w-12 h-12 bg-[#25D366] text-white rounded-full flex items-center justify-center shadow-2xl hover:scale-110 active:scale-95 transition-all" href="https://wa.me/94772309128" target="_blank">
+<svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+</svg>
+</a>
+</body></html>
